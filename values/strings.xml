@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">AppTcc</string>
+    <string name="action_settings">Settings</string>
+    <string name="btnIniciar">Iniciar</string>
+    <string name="btnOpcoes">Opções</string>
+    <string name="btnSair">Sair</string>
+    <string name="title_activity_escolher_idioma">EscolherIdioma</string>
+    <string name="txtEscolhaIdioma">Escolha o Idioma:</string>
+    <string name="btnIngles">Inglês</string>
+    <string name="btnPortugues">Português</string>
+    <string name="btnEspanhol">Espanhol</string>
+    <string name="title_activity_act_map">actMap</string>
+    <string name="title_activity_act__airport">act_Airport</string>
+    <string name="actAirportFirst">Primeiro, vamos aprender algumas palavras necessárias</string>
+    <string name="title_activity_act__exercicio">act_Exercicio</string>
+
+
+</resources>
