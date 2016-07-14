@@ -2,10 +2,8 @@ package boonedev.apptcc;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by vitor.oliveira on 13/07/2016.
@@ -21,15 +19,15 @@ public class clsExercicios extends SQLiteOpenHelper{
     public String[] nomeN = new String[9]; //Palavras Nativas
     public String[] nomeE = new String[9]; //Palavras Estrangeiras
 
-    public void clsExercicios(Context context){
+    public clsExercicios(Context context){
         super(context, NOME_BD, null, VERSAO_BD);
-        this.contexto = context;
+       // this.contexto = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db){
-
         verifyBase(db);
+
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
