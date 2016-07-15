@@ -4,6 +4,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 public class act_Exercicio extends AppCompatActivity {
     public int level;
@@ -22,9 +24,21 @@ public class act_Exercicio extends AppCompatActivity {
         db = this.openOrCreateDatabase("database", MODE_PRIVATE, null);
 
         verifyBase(db);
-
+        final Button btn = (Button) findViewById(R.id.button);
         clsExercicios teste = new clsExercicios(this.getBaseContext());
         teste.setLevel(level);
+
+        final int i =5;
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Random r = new Random();
+                //int r1 = r.nextInt(0 - 9) + 9;
+                btn.setText(nomeN[i]);
+            }
+        });
+
+
     }
 
     private void verifyBase(SQLiteDatabase db) {
