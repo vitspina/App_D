@@ -12,4 +12,12 @@
     tools:context="boonedev.apptcc.act_Exercicio"
     tools:showIn="@layout/activity_act__exercicio">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button"
+        android:layout_marginTop="123dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
