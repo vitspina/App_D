@@ -7,11 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.Random;
+
 public class act_Exercicio extends AppCompatActivity {
     public int level;
     public String idioma;
     public String[] nomeN = new String[9]; //Palavras Nativas
     public String[] nomeE = new String[9]; //Palavras Estrangeiras
+    public Random r = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,23 +27,121 @@ public class act_Exercicio extends AppCompatActivity {
         db = this.openOrCreateDatabase("database", MODE_PRIVATE, null);
 
         verifyBase(db);
-        final Button btn = (Button) findViewById(R.id.button);
+        final Button btn = (Button) findViewById(R.id.btnPalavra);
+        final Button btnOpt1 = (Button) findViewById(R.id.btnOpt1);
+        final Button btnOpt2 = (Button) findViewById(R.id.btnOpt2);
+        final Button btnOpt3 = (Button) findViewById(R.id.btnOpt3);
+        final Button btnOpt4 = (Button) findViewById(R.id.btnOpt4);
         clsExercicios teste = new clsExercicios(this.getBaseContext());
         teste.setLevel(level);
+        mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
 
-        final int i =5;
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Random r = new Random();
                 //int r1 = r.nextInt(0 - 9) + 9;
-                btn.setText(nomeN[i]);
+            }
+        });
+        btnOpt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btnOpt1.getTag() == btn.getTag()){
+                    //Certo
+                    mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
+                    btnOpt1.setTag("");
+                }
+            }
+        });
+        btnOpt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btnOpt2.getTag() == btn.getTag()){
+                    //Certo
+                    mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
+                    btnOpt2.setTag("");
+                }
+            }
+        });
+        btnOpt3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btnOpt3.getTag() == btn.getTag()){
+                    //Certo
+                    mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
+                    btnOpt3.setTag("");
+                }
+            }
+        });
+        btnOpt4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btnOpt4.getTag() == btn.getTag()){
+                    //Certo
+                    mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
+                    btnOpt4.setTag("");
+                }
             }
         });
 
 
-    }
 
+
+    }
+    public void mudaBotoes(Button btn, Button btnOpt1, Button btnOpt2, Button btnOpt3, Button btnOpt4){
+
+        int r1 = r.nextInt(10 - 0) + 0;
+        btn.setText(nomeN[r1]);
+        btn.setTag(r1);
+
+        int i = 0;
+        int[] outro = new int[4];
+
+        for(i = 0; i<4; i++) {
+
+            outro[i] = r.nextInt(10 - 0) + 0;
+            if (outro[i] == r1) {
+                if (r1 != 0)
+                    outro[i] = outro[i] - 1;
+                else {
+                    outro[i] = outro[i] + 1;
+                }
+            }
+        }
+
+        int rand = r.nextInt(4 - 0) + 0;
+        //btns[rand] = r1;
+        switch (rand){
+            case 0:
+                btnOpt1.setText(nomeE[r1]);
+                btnOpt1.setTag(r1);
+                btnOpt2.setText(nomeE[outro[1]]);
+                btnOpt3.setText(nomeE[outro[2]]);
+                btnOpt4.setText(nomeE[outro[3]]);
+                break;
+            case 1:
+                btnOpt1.setText(nomeE[outro[0]]);
+                btnOpt2.setText(nomeE[r1]);
+                btnOpt2.setTag(r1);
+                btnOpt3.setText(nomeE[outro[2]]);
+                btnOpt4.setText(nomeE[outro[3]]);
+                break;
+            case 2:
+                btnOpt1.setText(nomeE[outro[0]]);
+                btnOpt2.setText(nomeE[outro[1]]);
+                btnOpt3.setText(nomeE[r1]);
+                btnOpt3.setTag(r1);
+                btnOpt4.setText(nomeE[outro[3]]);
+                break;
+            case 3:
+                btnOpt1.setText(nomeE[outro[0]]);
+                btnOpt2.setText(nomeE[outro[1]]);
+                btnOpt3.setText(nomeE[outro[2]]);
+                btnOpt4.setText(nomeE[r1]);
+                btnOpt4.setTag(r1);
+                break;
+        }
+    }
     private void verifyBase(SQLiteDatabase db) {
         try {
 
