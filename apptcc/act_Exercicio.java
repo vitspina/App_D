@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -15,6 +17,7 @@ public class act_Exercicio extends AppCompatActivity {
     public String[] nomeN = new String[9]; //Palavras Nativas
     public String[] nomeE = new String[9]; //Palavras Estrangeiras
     public Random r = new Random();
+    public int pontos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,8 @@ public class act_Exercicio extends AppCompatActivity {
         db = this.openOrCreateDatabase("database", MODE_PRIVATE, null);
 
         verifyBase(db);
+        final ProgressBar bp = (ProgressBar) findViewById(R.id.barPoints);
+        final TextView txtPontos = (TextView) findViewById(R.id.txtPontos);
         final Button btn = (Button) findViewById(R.id.btnPalavra);
         final Button btnOpt1 = (Button) findViewById(R.id.btnOpt1);
         final Button btnOpt2 = (Button) findViewById(R.id.btnOpt2);
@@ -34,6 +39,8 @@ public class act_Exercicio extends AppCompatActivity {
         final Button btnOpt4 = (Button) findViewById(R.id.btnOpt4);
         clsExercicios teste = new clsExercicios(this.getBaseContext());
         teste.setLevel(level);
+        bp.setProgress(0);
+        txtPontos.setText("Pontos: " + pontos);
         mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -46,10 +53,16 @@ public class act_Exercicio extends AppCompatActivity {
         btnOpt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(btnOpt1.getTag() == btn.getTag()){
+                if (btnOpt1.getTag() == btn.getTag()) {
                     //Certo
+                    pontos = pontos +10;
+                    txtPontos.setText("Pontos: " + (pontos));
+                    bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
-                    btnOpt1.setTag("");
+                } else {
+                    pontos = pontos -10;
+                    txtPontos.setText("Pontos: " + (pontos));
+                    bp.setProgress(pontos);
                 }
             }
         });
@@ -58,18 +71,30 @@ public class act_Exercicio extends AppCompatActivity {
             public void onClick(View v) {
                 if(btnOpt2.getTag() == btn.getTag()){
                     //Certo
+                    pontos = pontos +10;
+                    txtPontos.setText("Pontos: " + (pontos));
+                    bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
-                    btnOpt2.setTag("");
+                }else{
+                    pontos = pontos -10;
+                    txtPontos.setText("Pontos: " + (pontos));
+                    bp.setProgress(pontos);
                 }
             }
         });
         btnOpt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(btnOpt3.getTag() == btn.getTag()){
+                if (btnOpt3.getTag() == btn.getTag()){
                     //Certo
+                    pontos = pontos +10;
+                    txtPontos.setText("Pontos: " + (pontos));
+                    bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
-                    btnOpt3.setTag("");
+                }else{
+                    pontos = pontos -10;
+                    txtPontos.setText("Pontos: " + (pontos));
+                    bp.setProgress(pontos);
                 }
             }
         });
@@ -78,8 +103,14 @@ public class act_Exercicio extends AppCompatActivity {
             public void onClick(View v) {
                 if(btnOpt4.getTag() == btn.getTag()){
                     //Certo
+                    pontos = pontos +10;
+                    txtPontos.setText("Pontos: " + (pontos));
+                    bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
-                    btnOpt4.setTag("");
+                } else {
+                    pontos = pontos -10;
+                    txtPontos.setText("Pontos: " + (pontos));
+                    bp.setProgress(pontos);
                 }
             }
         });
@@ -89,8 +120,9 @@ public class act_Exercicio extends AppCompatActivity {
 
     }
     public void mudaBotoes(Button btn, Button btnOpt1, Button btnOpt2, Button btnOpt3, Button btnOpt4){
+        int r1 = 0;
+        r1 = r.nextInt(9 - 0) + 0;
 
-        int r1 = r.nextInt(10 - 0) + 0;
         btn.setText(nomeN[r1]);
         btn.setTag(r1);
 
@@ -99,7 +131,7 @@ public class act_Exercicio extends AppCompatActivity {
 
         for(i = 0; i<4; i++) {
 
-            outro[i] = r.nextInt(10 - 0) + 0;
+            outro[i] = r.nextInt(9 - 0) + 0;
             if (outro[i] == r1) {
                 if (r1 != 0)
                     outro[i] = outro[i] - 1;
@@ -108,35 +140,47 @@ public class act_Exercicio extends AppCompatActivity {
                 }
             }
         }
-
-        int rand = r.nextInt(4 - 0) + 0;
+        int rand = 0;
+        rand = r.nextInt(4 - 0) + 0;
         //btns[rand] = r1;
         switch (rand){
             case 0:
                 btnOpt1.setText(nomeE[r1]);
                 btnOpt1.setTag(r1);
                 btnOpt2.setText(nomeE[outro[1]]);
+                btnOpt2.setTag("");
                 btnOpt3.setText(nomeE[outro[2]]);
+                btnOpt3.setTag("");
                 btnOpt4.setText(nomeE[outro[3]]);
+                btnOpt4.setTag("");
                 break;
             case 1:
                 btnOpt1.setText(nomeE[outro[0]]);
+                btnOpt1.setTag("");
                 btnOpt2.setText(nomeE[r1]);
                 btnOpt2.setTag(r1);
                 btnOpt3.setText(nomeE[outro[2]]);
+                btnOpt3.setTag("");
                 btnOpt4.setText(nomeE[outro[3]]);
+                btnOpt4.setTag("");
                 break;
             case 2:
                 btnOpt1.setText(nomeE[outro[0]]);
+                btnOpt1.setTag("");
                 btnOpt2.setText(nomeE[outro[1]]);
+                btnOpt3.setTag("");
                 btnOpt3.setText(nomeE[r1]);
                 btnOpt3.setTag(r1);
                 btnOpt4.setText(nomeE[outro[3]]);
+                btnOpt4.setTag("");
                 break;
             case 3:
                 btnOpt1.setText(nomeE[outro[0]]);
+                btnOpt1.setTag("");
                 btnOpt2.setText(nomeE[outro[1]]);
+                btnOpt2.setTag("");
                 btnOpt3.setText(nomeE[outro[2]]);
+                btnOpt3.setTag("");
                 btnOpt4.setText(nomeE[r1]);
                 btnOpt4.setTag(r1);
                 break;
