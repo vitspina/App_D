@@ -12,10 +12,11 @@ import android.widget.TextView;
 import java.util.Random;
 
 public class act_Exercicio extends AppCompatActivity {
-    public int level;
+    public int level, j;
     public String idioma;
     public String[] nomeN = new String[9]; //Palavras Nativas
     public String[] nomeE = new String[9]; //Palavras Estrangeiras
+    public int[] ppp = {5,5,5,5,5,5,5,5,5,5};
     public Random r = new Random();
     public int pontos = 0;
 
@@ -53,14 +54,20 @@ public class act_Exercicio extends AppCompatActivity {
         btnOpt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                j = (int) btn.getTag();
                 if (btnOpt1.getTag() == btn.getTag()) {
                     //Certo
-                    pontos = pontos +10;
+                    pontos = pontos + ppp[j];
                     txtPontos.setText("Pontos: " + (pontos));
+                    if(ppp[j] != 1)
+                    ppp[j]--;
                     bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
                 } else {
-                    pontos = pontos -10;
+                    pontos = pontos - 5;
+                    if(ppp[j] !=5){
+                        ppp[j]++;
+                    }
                     txtPontos.setText("Pontos: " + (pontos));
                     bp.setProgress(pontos);
                 }
@@ -69,14 +76,19 @@ public class act_Exercicio extends AppCompatActivity {
         btnOpt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                j = (int) btn.getTag();
                 if(btnOpt2.getTag() == btn.getTag()){
                     //Certo
-                    pontos = pontos +10;
+                    pontos = pontos + ppp[j];
                     txtPontos.setText("Pontos: " + (pontos));
-                    bp.setProgress(pontos);
+                    if(ppp[j] != 1)
+                        ppp[j]--;                    bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
                 }else{
-                    pontos = pontos -10;
+                    pontos = pontos - 5;
+                    if(ppp[j] !=5){
+                        ppp[j]++;
+                    }
                     txtPontos.setText("Pontos: " + (pontos));
                     bp.setProgress(pontos);
                 }
@@ -85,14 +97,20 @@ public class act_Exercicio extends AppCompatActivity {
         btnOpt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                j = (int) btn.getTag();
                 if (btnOpt3.getTag() == btn.getTag()){
                     //Certo
-                    pontos = pontos +10;
+                    pontos = pontos + ppp[j];
                     txtPontos.setText("Pontos: " + (pontos));
+                    if(ppp[j] != 1)
+                        ppp[j]--;
                     bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
                 }else{
-                    pontos = pontos -10;
+                    pontos = pontos - 5;
+                    if(ppp[j] !=5){
+                        ppp[j]++;
+                    }
                     txtPontos.setText("Pontos: " + (pontos));
                     bp.setProgress(pontos);
                 }
@@ -101,14 +119,20 @@ public class act_Exercicio extends AppCompatActivity {
         btnOpt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                j = (int) btn.getTag();
                 if(btnOpt4.getTag() == btn.getTag()){
                     //Certo
-                    pontos = pontos +10;
+                    pontos = pontos + ppp[j];
                     txtPontos.setText("Pontos: " + (pontos));
+                    if(ppp[j] != 1)
+                        ppp[j]--;
                     bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
                 } else {
-                    pontos = pontos -10;
+                    pontos = pontos - 5;
+                    if(ppp[j] !=5){
+                        ppp[j]++;
+                    }
                     txtPontos.setText("Pontos: " + (pontos));
                     bp.setProgress(pontos);
                 }
