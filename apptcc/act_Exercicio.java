@@ -16,7 +16,8 @@ public class act_Exercicio extends AppCompatActivity {
     public String idioma;
     public String[] nomeN = new String[9]; //Palavras Nativas
     public String[] nomeE = new String[9]; //Palavras Estrangeiras
-    public int[] ppp = {5,5,5,5,5,5,5,5,5,5};
+    public int[] ppp = {5,5,5,5,5,5,5,5,5,5}; //Pontos Por Palavra
+    public int[] nvlP = {3,3,3,3,3,3,3,3,3,3}; //Nivel da palavra
     public Random r = new Random();
     public int pontos = 0;
 
@@ -63,7 +64,8 @@ public class act_Exercicio extends AppCompatActivity {
                     ppp[j]--;
                     bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
-                } else {
+                } else {//Errou
+                    btnOpt1.setBackgroundResource(R.color.Red);
                     pontos = pontos - 5;
                     if(ppp[j] !=5){
                         ppp[j]++;
@@ -84,7 +86,8 @@ public class act_Exercicio extends AppCompatActivity {
                     if(ppp[j] != 1)
                         ppp[j]--;                    bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
-                }else{
+                }else{//Errou
+                    btnOpt2.setBackgroundResource(R.color.Red);
                     pontos = pontos - 5;
                     if(ppp[j] !=5){
                         ppp[j]++;
@@ -106,7 +109,8 @@ public class act_Exercicio extends AppCompatActivity {
                         ppp[j]--;
                     bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
-                }else{
+                }else{//Errou
+                    btnOpt3.setBackgroundResource(R.color.Red);
                     pontos = pontos - 5;
                     if(ppp[j] !=5){
                         ppp[j]++;
@@ -128,7 +132,8 @@ public class act_Exercicio extends AppCompatActivity {
                         ppp[j]--;
                     bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
-                } else {
+                } else {//Errou
+                    btnOpt4.setBackgroundResource(R.color.Red);
                     pontos = pontos - 5;
                     if(ppp[j] !=5){
                         ppp[j]++;
@@ -145,7 +150,24 @@ public class act_Exercicio extends AppCompatActivity {
     }
     public void mudaBotoes(Button btn, Button btnOpt1, Button btnOpt2, Button btnOpt3, Button btnOpt4){
         int r1 = 0;
+        int aux;
+        btnOpt1.setBackgroundResource(R.color.White);
+        btnOpt2.setBackgroundResource(R.color.White);
+        btnOpt3.setBackgroundResource(R.color.White);
+        btnOpt4.setBackgroundResource(R.color.White);
+
         r1 = r.nextInt(9 - 0) + 0;
+
+        if(ppp[r1] == 1 || ppp[r1] ==2){
+            aux  = r1;
+            r1 = r.nextInt(9 - 0) + 0;
+            if(r1 == aux){
+                r1 = r.nextInt(9 - 0) + 0;
+            }
+            if(r1 == aux){
+                r1 = r.nextInt(9 - 0) + 0;
+            }
+        }
 
         btn.setText(nomeN[r1]);
         btn.setTag(r1);
