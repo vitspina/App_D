@@ -32,7 +32,7 @@ public class actMap extends AppCompatActivity {
     public void btnAirportOnClick() {
         Bundle bundle = new Bundle();
         bundle.putInt("level", level);
-        Intent nextActivity = new Intent(this, act_Exercicio.class);
+        Intent nextActivity = new Intent(this, act_Airport.class);
         nextActivity.putExtras(bundle);
         startActivity(nextActivity);
     }
