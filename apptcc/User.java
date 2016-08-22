@@ -9,7 +9,7 @@ public class User {
 
     // Getters ######################################
     public int getLevel() {
-        return level;
+        return level; //Level
     }
     public String getIdioma() {
         return idioma;
