@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class act_Airport extends AppCompatActivity {
 public int level;
@@ -26,8 +27,10 @@ public int level;
             }
         });
         TextView txt = (TextView) findViewById(R.id.textView);
+
+
         if(level == 0) {
-            txt.setText(R.string.actAirportFirst);
+            Toast.makeText(getApplicationContext(), "Vamos aprender palavras necessarias!", Toast.LENGTH_LONG).show();
         }
 
         btnInfo.setOnClickListener(new View.OnClickListener() {

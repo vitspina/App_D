@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 
 public class actMap extends AppCompatActivity {
     User usu = new User();
@@ -15,9 +17,13 @@ public class actMap extends AppCompatActivity {
         setContentView(R.layout.activity_act_map);
 
         level = usu.getLevel();
+         if (level == 0) {
+             Toast.makeText(getApplicationContext(), "Vamos começar nossa diversao pelo aeroporto!", Toast.LENGTH_LONG).show();
+         }
+
 
         Button btnAirport = (Button) findViewById(R.id.btnAirport);
-        Button btnRua = (Button) findViewById(R.id.btnRua);
+        //Button btnRua = (Button) findViewById(R.id.btnRua);
         Button btnHotel = (Button) findViewById(R.id.btnHotel);
 
         btnAirport.setOnClickListener(new View.OnClickListener() {

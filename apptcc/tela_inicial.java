@@ -23,16 +23,25 @@ public class tela_inicial extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicial);
 
-        Button btn = (Button) findViewById(R.id.btn1Menu);
-        btn.setText(i);//TODO:lembrar de apagar
-        btn.setOnClickListener(new View.OnClickListener() {
+        Button btn1Menu = (Button) findViewById(R.id.btn1Menu);
+
+        btn1Menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btn1OnClick();
+                btn1MenuOnClick();
             }
         });
 
     }
+
+        public void btn1MenuOnClick() {
+            Bundle bundle = new Bundle();
+            bundle.putInt("level", lvl);
+            Intent nextActivity = new Intent(this, EscolherIdioma.class);
+            nextActivity.putExtras(bundle);
+            startActivity(nextActivity);
+        }
+
 
     public void btn1OnClick() {
         if (lvl == 0) {
@@ -43,6 +52,8 @@ public class tela_inicial extends AppCompatActivity {
             startActivity(nextActivity);
         }
     }
+
+
 
     private void ConfigBanco() {
         SQLiteDatabase db;
@@ -56,9 +67,6 @@ public class tela_inicial extends AppCompatActivity {
             if (selecionarDados(db)) {
                 if(lvl == 0){
                     i = "INICIAR- "+ id + " - " + lvl + " - " + i;
-                }else//TODO:lembrar de apagar
-                {
-                    i = "CONTINUAR- "+ id + " - " + lvl + " - " + i;
                 }
             }else{
                    /* Insert data to a Table*/

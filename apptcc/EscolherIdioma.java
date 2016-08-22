@@ -9,6 +9,7 @@ import android.widget.Button;
 
 public class EscolherIdioma extends AppCompatActivity {
 public String lang = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
