@@ -18,50 +18,84 @@
         android:layout_height="wrap_content"
         android:text="@string/txtEscolhaIdioma"
         android:layout_centerHorizontal="true"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:textColor="#696969"
+        android:textStyle="bold"/>
 
 
-    <Button
+   <Button
         android:id="@+id/btnIngles"
         android:layout_width="430dp"
         android:layout_height="wrap_content"
-        android:textColor="#000000"
+        android:textColor="#DCDCDC"
         android:textSize="30sp"
         android:drawableLeft="@drawable/usa"
         android:text="@string/btnIngles"
+        android:background="@drawable/buttonshape"
+        android:layout_marginTop="57dp"
         android:layout_below="@+id/txtEscolhaIdioma"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="30px"
-        android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentStart="true" />
+
+
 
     <Button
         android:id="@+id/btnPortugues"
         android:layout_width="430dp"
         android:layout_height="wrap_content"
-        android:textColor="#000000"
+        android:textColor="#DCDCDC"
         android:textSize="30sp"
         android:drawableLeft="@drawable/brazil"
-        android:drawableRight="@drawable/lock"
         android:text="@string/btnPortugues"
-        android:layout_below="@+id/btnIngles"
+        android:background="@drawable/buttonshape"
+        android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="30px"
         android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginTop="55dp" />
 
     <Button
         android:id="@+id/btnEspanhol"
         android:layout_width="430dp"
         android:layout_height="wrap_content"
-        android:textColor="#000000"
+        android:textColor="#DCDCDC"
         android:textSize="30sp"
         android:drawableLeft="@drawable/spain"
-        android:drawableRight="@drawable/lock"
+
         android:text="@string/btnEspanhol"
+        android:background="@drawable/buttonshape"
         android:layout_below="@+id/btnPortugues"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="30px"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="____________________________________"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/txtEscolhaIdioma"
+        android:textSize="20dp"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Idiomas bloqueados:"
+        android:id="@+id/textView3"
+        android:textSize="25dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="__________________________________________________"
+    android:id="@+id/textView4"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center"/>
+
 </RelativeLayout>
