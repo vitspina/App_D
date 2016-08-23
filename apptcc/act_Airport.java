@@ -1,29 +1,63 @@
 package boonedev.apptcc;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class act_Airport extends AppCompatActivity {
 public int level;
+public int numExer; // Guarda o num. do exercicio
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act__airport);
         final Button btnExercicio = (Button) findViewById(R.id.btnExercicio);
+        final Button btnVoltarGroup = (Button) findViewById(R.id.btnVoltarGroup);
+        final Button btnTreino = (Button) findViewById(R.id.btnTreino);
         final Button btnInfo = (Button) findViewById(R.id.btnInfo);
+        final Button btnTaxi = (Button) findViewById(R.id.btnTaxi);
+        final Button btnPracaAlim = (Button) findViewById(R.id.btnPracaAlim);
+        final ImageView rGroup = (ImageView) findViewById(R.id.rGroup);
+
+
+        //Apaga os botoes da tela
         btnExercicio.setVisibility(View.INVISIBLE);
+        btnTreino.setVisibility(View.INVISIBLE);
+        btnVoltarGroup.setVisibility((View.INVISIBLE));
+        rGroup.setVisibility(View.INVISIBLE);
+
+
         Bundle extras = getIntent().getExtras();
         level = extras.getInt("level");
+
+        btnVoltarGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnExercicio.setVisibility(View.INVISIBLE);
+                btnTreino.setVisibility(View.INVISIBLE);
+                btnVoltarGroup.setVisibility((View.INVISIBLE));
+                rGroup.setVisibility(View.INVISIBLE);
+            }
+        });
+
 
         btnExercicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 btnExercicioOnClick();
+            }
+        });
+        btnTreino.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnTreinoOnClick();
             }
         });
         TextView txt = (TextView) findViewById(R.id.textView);
@@ -36,7 +70,35 @@ public int level;
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                numExer = 1; //Clicou no botao Informacoes
                 btnExercicio.setVisibility(View.VISIBLE);
+                btnTreino.setVisibility(View.VISIBLE);
+                btnVoltarGroup.setVisibility((View.VISIBLE));
+                rGroup.setVisibility(View.VISIBLE);
+            }
+        });
+        btnPracaAlim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                numExer = 2; //Clicou no botao Praca de alimentacao
+                btnExercicio.setVisibility(View.VISIBLE);
+                btnTreino.setVisibility(View.VISIBLE);
+                btnVoltarGroup.setVisibility((View.VISIBLE));
+                rGroup.setVisibility(View.VISIBLE);
+            }
+        });
+        btnTaxi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(btnTaxi.getTag() == "locked"){
+
+                }else {
+                    numExer = 3; //Clicou no botao Taxi
+                    btnExercicio.setVisibility(View.VISIBLE);
+                    btnTreino.setVisibility(View.VISIBLE);
+                    btnVoltarGroup.setVisibility((View.VISIBLE));
+                    rGroup.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -45,9 +107,12 @@ public int level;
     public void btnExercicioOnClick() {
         Bundle bundle = new Bundle();
         bundle.putInt("level", level);
+        bundle.putInt("exerc", numExer);
         Intent nextActivity = new Intent(this, act_Exercicio.class);
         nextActivity.putExtras(bundle);
         startActivity(nextActivity);
     }
-
+    public void btnTreinoOnClick(){
+        level = level +1;
+    }
 }

@@ -26,7 +26,6 @@ public class clsExercicios extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db){
-        verifyBase(db);
 
     }
     @Override
@@ -35,54 +34,22 @@ public class clsExercicios extends SQLiteOpenHelper{
     }
 
     //Setters
-    public void setLevel(int level) {
-        this.level = level;
+    public void setLevel(int _level, SQLiteDatabase db) {
+        this.level = _level;
+        db.execSQL("UPDATE "
+                + "usu_info"
+                + " set level = "+(level)+";");
     }
     public void setIdioma(String idioma) {
         this.idioma = idioma;
     }
 
-    private void verifyBase(SQLiteDatabase db) {
-        try {
-
-
-            db.execSQL("CREATE TABLE IF NOT EXISTS "
-                    + "tb_palavras"
-                    + " (id INT(1), level INT(3), language VARCHAR, palavra VARCHAR);");
-
-            if (selecionarDados(db)) {
-                if (level == 1) {
-
-                }
-            } else {
-                if (level == 1) {
-                    db.execSQL("INSERT INTO "
-                            + "tb_palavras"
-                            + " (id, level, language, palavra)"
-                            + " VALUES (1, 1, 'pt', 'Olá'),(2,1,'pt','Bom dia'),(3, 1, 'pt', 'Boa noite'),(4,1,'pt','Desculpe'),(5, 1, 'pt', 'Obrigado'),(6,1,'pt','Tchau'),(7, 1, 'pt', 'Noite'),(8,1,'pt','Dia'),(9, 1, 'pt', 'Tarde'),(10,1,'pt','Nome'),"
-                            + " (1, 1, 'en', 'Hello'),(2,1,'en','Good Morning'),(3, 1, 'en', 'Good Night'),(4,1,'en','Sorry'),(5, 1, 'en', 'Thank You'),(6,1,'en','Bye'),(7, 1, 'en', 'Night'),(8,1,'en','Day'),(9, 1, 'en', 'Afternoon'),(10,1,'en','Name')");
-
-                    selecionarDados(db);
-                }
-            }
-        } catch (Exception e){
-            throw new RuntimeException(e);
-        }
-    }
-    private boolean selecionarDados(SQLiteDatabase db){
-        /*retrieve data from database */
-        Cursor c = db.rawQuery("SELECT * FROM tb_palavras where level = "+level+" and language = '"+idioma+"'", null);
+    public int getLevel(SQLiteDatabase db){
+        Cursor c = db.rawQuery("SELECT * from usu_info", null);
         c.moveToFirst();
         if(c.moveToFirst()) {
-            int i = 0;
-            while (c.moveToNext()) {
-                nomeN[i] = c.getString(3);
-                i++;
-            }
-        return true;
+            level = c.getInt(1);
         }
-        else{
-            return false;
-        }
+        return level;
     }
 }
