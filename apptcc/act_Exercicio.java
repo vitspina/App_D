@@ -13,6 +13,7 @@ import java.util.Random;
 
 public class act_Exercicio extends AppCompatActivity {
     public int level, j;
+    public int numExer; //Numero do Exercicio selecionado
     public String idioma;
     public String[] nomeN = new String[9]; //Palavras Nativas
     public String[] nomeE = new String[9]; //Palavras Estrangeiras
@@ -28,10 +29,15 @@ public class act_Exercicio extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         level = extras.getInt("level");
+        numExer  = extras.getInt("exerc");
         SQLiteDatabase db;
         db = this.openOrCreateDatabase("database", MODE_PRIVATE, null);
 
-        verifyBase(db);
+        clsExercicios classeExerc = new clsExercicios(this.getBaseContext());
+        level = classeExerc.getLevel(db);
+
+        verifyBase(db, classeExerc); //Cria/Busca as palavras
+
         final ProgressBar bp = (ProgressBar) findViewById(R.id.barPoints);
         final TextView txtPontos = (TextView) findViewById(R.id.txtPontos);
         final Button btn = (Button) findViewById(R.id.btnPalavra);
@@ -39,8 +45,7 @@ public class act_Exercicio extends AppCompatActivity {
         final Button btnOpt2 = (Button) findViewById(R.id.btnOpt2);
         final Button btnOpt3 = (Button) findViewById(R.id.btnOpt3);
         final Button btnOpt4 = (Button) findViewById(R.id.btnOpt4);
-        clsExercicios teste = new clsExercicios(this.getBaseContext());
-        teste.setLevel(level);
+
         bp.setProgress(0);
         txtPontos.setText("Pontos: " + pontos);
         mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
@@ -232,36 +237,44 @@ public class act_Exercicio extends AppCompatActivity {
                 break;
         }
     }
-    private void verifyBase(SQLiteDatabase db) {
+    public void verifyBase(SQLiteDatabase db, Object obj) {
         try {
-
+            clsExercicios clsExerc = new clsExercicios(this.getBaseContext());
 
             db.execSQL("CREATE TABLE IF NOT EXISTS "
                     + "tb_palavras"
                     + " (id INT(1), level INT(3), language VARCHAR, palavra VARCHAR);");
 
-            if (selecionarDados(db)) {
-                if (level == 0) {
-                    level = 1;
-                }
+            if (selecionarDados(db, numExer)) {
+                //Encontrou as palavras.... segue o jogo
             } else {
-                if (level == 0) {
+                //Não encontrou, cria
+                if (level == 1 && numExer ==1) { //Informacoes
                     db.execSQL("INSERT INTO "
                             + "tb_palavras"
                             + " (id, level, language, palavra)"
                             + " VALUES (1, 1, 'pt', 'Olá'),(2,1,'pt','Bom dia'),(3, 1, 'pt', 'Boa noite'),(4,1,'pt','Desculpe'),(5, 1, 'pt', 'Obrigado'),(6,1,'pt','Tchau'),(7, 1, 'pt', 'Noite'),(8,1,'pt','Dia'),(9, 1, 'pt', 'Tarde'),(10,1,'pt','Nome'),"
                             + " (1, 1, 'en', 'Hello'),(2,1,'en','Good Morning'),(3, 1, 'en', 'Good Night'),(4,1,'en','Sorry'),(5, 1, 'en', 'Thank You'),(6,1,'en','Bye'),(7, 1, 'en', 'Night'),(8,1,'en','Day'),(9, 1, 'en', 'Afternoon'),(10,1,'en','Name')");
-
-                    selecionarDados(db);
+                    clsExerc.setLevel(level+1, db);
                 }
+                else if (level == 2 && numExer ==2) { //Praca de Alim
+                    db.execSQL("INSERT INTO "
+                            + "tb_palavras"
+                            + " (id, level, language, palavra)"
+                            + " VALUES (1, 2, 'pt', 'Pão'),(2,2,'pt','Suco'),(3, 2, 'pt', 'Café'),(4,2,'pt','Salada'),(5, 2, 'pt', 'Carne'),(6,2,'pt','Frango'),(7, 2, 'pt', 'Batata'),(8,2,'pt','Água'),(9, 2, 'pt', 'Refrigerante'),(10,2,'pt','Chá'),"
+                            + " (1, 2, 'en', 'Bread'),(2,2,'en','Juice'),(3, 2, 'en', 'Coffee'),(4,2,'en','Salad'),(5, 2, 'en', 'Meat'),(6,2,'en','Chicken'),(7, 2, 'en', 'Potato'),(8,2,'en','Water'),(9, 2, 'en', 'Soda'),(10,2,'en','Tea')");
+                    clsExerc.setLevel(level+1, db);
+                }
+                    selecionarDados(db, numExer);
+
             }
         } catch (Exception e){
             throw new RuntimeException(e);
         }
     }
-    private boolean selecionarDados(SQLiteDatabase db){
+    private boolean selecionarDados(SQLiteDatabase db, int numEx){
         /*retrieve data from database */
-        Cursor c = db.rawQuery("SELECT * FROM tb_palavras where level = "+(level+1)+" and language ='en'" , null); //'"+idioma+"'"
+        Cursor c = db.rawQuery("SELECT * FROM tb_palavras where level = "+(numEx)+" and language ='en'" , null); //'"+idioma+"'"
         c.moveToFirst();
         int i = 0;
         if(c.moveToFirst()) {
@@ -270,7 +283,7 @@ public class act_Exercicio extends AppCompatActivity {
                 i++;
             }
         }
-        Cursor d = db.rawQuery("SELECT * FROM tb_palavras where level = "+(level+1)+" and language ='pt'" , null); //'"+idioma+"'"
+        Cursor d = db.rawQuery("SELECT * FROM tb_palavras where level = "+(numEx)+" and language ='pt'" , null); //'"+idioma+"'"
         d.moveToFirst();
         i = 0;
         if(d.moveToFirst()) {
