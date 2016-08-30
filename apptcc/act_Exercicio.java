@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class act_Exercicio extends AppCompatActivity {
@@ -21,6 +22,12 @@ public class act_Exercicio extends AppCompatActivity {
     public int[] nvlP = {3,3,3,3,3,3,3,3,3,3}; //Nivel da palavra
     public Random r = new Random();
     public int pontos = 0;
+
+    private CustomBarra seekbar;
+
+    private ProgressItem mProgressItem;
+    private ArrayList<ProgressItem> progressItemList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,7 @@ public class act_Exercicio extends AppCompatActivity {
 
         clsExercicios classeExerc = new clsExercicios(this.getBaseContext());
         level = classeExerc.getLevel(db);
+        seekbar = ((CustomBarra) findViewById(R.id.customSeekBar));
 
         verifyBase(db, classeExerc); //Cria/Busca as palavras
 
@@ -48,6 +56,7 @@ public class act_Exercicio extends AppCompatActivity {
 
         bp.setProgress(0);
         txtPontos.setText("Pontos: " + pontos);
+        criaBarraMultiCor();
         mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +78,7 @@ public class act_Exercicio extends AppCompatActivity {
                     ppp[j]--;
                     bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
+                    alteraBarraMultiCor();
                 } else {//Errou
                     btnOpt1.setBackgroundResource(R.color.Red);
                     pontos = pontos - 5;
@@ -77,6 +87,7 @@ public class act_Exercicio extends AppCompatActivity {
                     }
                     txtPontos.setText("Pontos: " + (pontos));
                     bp.setProgress(pontos);
+                    alteraBarraMultiCor();
                 }
             }
         });
@@ -91,6 +102,7 @@ public class act_Exercicio extends AppCompatActivity {
                     if(ppp[j] != 1)
                         ppp[j]--;                    bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
+                    alteraBarraMultiCor();
                 }else{//Errou
                     btnOpt2.setBackgroundResource(R.color.Red);
                     pontos = pontos - 5;
@@ -99,6 +111,7 @@ public class act_Exercicio extends AppCompatActivity {
                     }
                     txtPontos.setText("Pontos: " + (pontos));
                     bp.setProgress(pontos);
+                    alteraBarraMultiCor();
                 }
             }
         });
@@ -114,6 +127,7 @@ public class act_Exercicio extends AppCompatActivity {
                         ppp[j]--;
                     bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
+                    alteraBarraMultiCor();
                 }else{//Errou
                     btnOpt3.setBackgroundResource(R.color.Red);
                     pontos = pontos - 5;
@@ -122,6 +136,7 @@ public class act_Exercicio extends AppCompatActivity {
                     }
                     txtPontos.setText("Pontos: " + (pontos));
                     bp.setProgress(pontos);
+                    alteraBarraMultiCor();
                 }
             }
         });
@@ -137,6 +152,7 @@ public class act_Exercicio extends AppCompatActivity {
                         ppp[j]--;
                     bp.setProgress(pontos);
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
+                    alteraBarraMultiCor();
                 } else {//Errou
                     btnOpt4.setBackgroundResource(R.color.Red);
                     pontos = pontos - 5;
@@ -145,6 +161,7 @@ public class act_Exercicio extends AppCompatActivity {
                     }
                     txtPontos.setText("Pontos: " + (pontos));
                     bp.setProgress(pontos);
+                    alteraBarraMultiCor();
                 }
             }
         });
@@ -153,6 +170,69 @@ public class act_Exercicio extends AppCompatActivity {
 
 
     }
+    public void criaBarraMultiCor(){
+        int[] pesos = {0,0,0,0,0};
+        int r,g,y,o;
+        pesos = verificaPesos();
+        progressItemList = new ArrayList<ProgressItem>();
+        // red span
+        mProgressItem = new ProgressItem();
+        mProgressItem.progressItemPercentage = pesos[0]*10;
+        mProgressItem.color = R.color.Red;
+        progressItemList.add(mProgressItem);
+        //orange
+        mProgressItem = new ProgressItem();
+        mProgressItem.progressItemPercentage = pesos[1]*10;
+        mProgressItem.color = R.color.Orange;
+        progressItemList.add(mProgressItem);
+        //orange
+        mProgressItem = new ProgressItem();
+        mProgressItem.progressItemPercentage = pesos[2]*10;
+        mProgressItem.color = R.color.LightOrange;
+        progressItemList.add(mProgressItem);
+        //orange
+        mProgressItem = new ProgressItem();
+        mProgressItem.progressItemPercentage = pesos[3]*10;
+        mProgressItem.color = R.color.Yellow;
+        progressItemList.add(mProgressItem);
+        //orange
+        mProgressItem = new ProgressItem();
+        mProgressItem.progressItemPercentage = pesos[4]*10;
+        mProgressItem.color = R.color.Green;
+        progressItemList.add(mProgressItem);
+
+        seekbar.initData(progressItemList);
+    }
+    public void alteraBarraMultiCor(){
+        int[] pesos = {0,0,0,0,0};
+        int r,g,y,o;
+        pesos = verificaPesos();
+        progressItemList.get(0).progressItemPercentage = pesos[0]*10;
+        progressItemList.get(1).progressItemPercentage = pesos[1]*10;
+        progressItemList.get(2).progressItemPercentage = pesos[2]*10;
+        progressItemList.get(3).progressItemPercentage = pesos[3]*10;
+        progressItemList.get(4).progressItemPercentage = pesos[4]*10;
+        seekbar.initData(progressItemList);
+    }
+    public int[] verificaPesos(){
+        int i =0;
+        int[] pesos = {0,0,0,0,0};
+        for(i = 0; i<10; i++) {
+            if(ppp[i] ==5){
+                pesos[0]++;
+            }else if(ppp[i] ==4){
+                pesos[1]++;
+            }else if(ppp[i] ==3){
+                pesos[2]++;
+            }else if(ppp[i] ==2){
+                pesos[3]++;
+            }else if(ppp[i] ==1){
+                pesos[4]++;
+            }
+        }
+        return pesos;
+    }
+
     public void mudaBotoes(Button btn, Button btnOpt1, Button btnOpt2, Button btnOpt3, Button btnOpt4){
         int r1 = 0;
         int aux;
