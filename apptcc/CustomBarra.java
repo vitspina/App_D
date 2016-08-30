@@ -30,7 +30,6 @@ public class CustomBarra extends SeekBar{
     public void initData(ArrayList<ProgressItem> progressItemsList) {
         this.mProgressItemsList = progressItemsList;
     }
-
     @Override
     protected synchronized void onMeasure(int widthMeasureSpec,
                                           int heightMeasureSpec) {

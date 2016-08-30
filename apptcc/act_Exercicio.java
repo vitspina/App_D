@@ -2,6 +2,7 @@ package boonedev.apptcc;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,6 +23,8 @@ public class act_Exercicio extends AppCompatActivity {
     public int[] nvlP = {3,3,3,3,3,3,3,3,3,3}; //Nivel da palavra
     public Random r = new Random();
     public int pontos = 0;
+    public boolean controlaCreateBar = false;
+    public Canvas c = new Canvas();
 
     private CustomBarra seekbar;
 
@@ -56,7 +59,7 @@ public class act_Exercicio extends AppCompatActivity {
 
         bp.setProgress(0);
         txtPontos.setText("Pontos: " + pontos);
-        criaBarraMultiCor();
+        if(!controlaCreateBar) criaBarraMultiCor();
         mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -172,7 +175,6 @@ public class act_Exercicio extends AppCompatActivity {
     }
     public void criaBarraMultiCor(){
         int[] pesos = {0,0,0,0,0};
-        int r,g,y,o;
         pesos = verificaPesos();
         progressItemList = new ArrayList<ProgressItem>();
         // red span
@@ -202,6 +204,7 @@ public class act_Exercicio extends AppCompatActivity {
         progressItemList.add(mProgressItem);
 
         seekbar.initData(progressItemList);
+        controlaCreateBar = true;
     }
     public void alteraBarraMultiCor(){
         int[] pesos = {0,0,0,0,0};
@@ -213,6 +216,8 @@ public class act_Exercicio extends AppCompatActivity {
         progressItemList.get(3).progressItemPercentage = pesos[3]*10;
         progressItemList.get(4).progressItemPercentage = pesos[4]*10;
         seekbar.initData(progressItemList);
+        seekbar.invalidate();
+
     }
     public int[] verificaPesos(){
         int i =0;
