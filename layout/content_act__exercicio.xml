@@ -80,4 +80,18 @@
         android:layout_alignRight="@+id/btnOpt2"
         android:layout_alignEnd="@+id/btnOpt2"
         android:max="100" />
+
+    <boonedev.apptcc.CustomBarra
+        android:id="@+id/customSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@android:color/transparent"
+        android:thumb="@drawable/seek_thumb"
+        android:thumbOffset="12dp"
+        android:layout_below="@+id/barPoints"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
