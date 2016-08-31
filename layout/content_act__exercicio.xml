@@ -17,47 +17,55 @@
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/btnPalavra"
+        android:textSize="25dp"
+        android:background="@drawable/buttonshape"
+        android:textColor="#DCDCDC"
         android:layout_marginTop="127dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/btnOpt1"
-        android:layout_marginTop="129dp"
-        android:layout_below="@+id/btnPalavra"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:textColor="#000000"
+        android:background="@drawable/buttonshapebloq"
+        android:layout_marginTop="340dp"
+        />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/btnOpt2"
-        android:layout_alignBottom="@+id/btnOpt1"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textColor="#000000"
+        android:background="@drawable/buttonshapebloq"
+        android:layout_marginTop="340dp"
+        android:layout_marginLeft="240dp"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/btnOpt3"
-        android:layout_marginTop="49dp"
-        android:layout_below="@+id/btnOpt1"
+        android:textColor="#000000"
+        android:background="@drawable/buttonshapebloq"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/btnOpt4"
-        android:layout_alignTop="@+id/btnOpt3"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textColor="#000000"
+        android:background="@drawable/buttonshapebloq"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="350dp"
+        android:layout_alignLeft="@+id/btnOpt2"
+        android:layout_alignStart="@+id/btnOpt2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -80,6 +88,37 @@
         android:layout_alignRight="@+id/btnOpt2"
         android:layout_alignEnd="@+id/btnOpt2"
         android:max="100" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="_____________________________________________________"
+        android:id="@+id/textView6"
+        android:layout_gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resposta:"
+        android:textSize="18dp"
+        android:id="@+id/textView7"
+        android:layout_below="@+id/textView6"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_alignStart="@+id/textView6" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ligue a palavra correta:"
+        android:id="@+id/textView8"
+        android:textSize="18dp"
+        android:layout_alignTop="@+id/barPoints"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"/>
 
     <boonedev.apptcc.CustomBarra
         android:id="@+id/customSeekBar"

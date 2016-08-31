@@ -37,11 +37,11 @@
         android:layout_alignParentStart="true" />
 
 
-    </TableLayout>
+</TableLayout>
 
-    <GridLayout
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
 
@@ -49,10 +49,154 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:id="@+id/imageView3"
-            android:src="@drawable/hello"
-            android:layout_row="3"
-            android:layout_column="3" />
-    </GridLayout>
+            android:src="@drawable/night"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"/>
 
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:id="@+id/imageView4"
+            android:src="@drawable/afternoon"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="90dp"/>
+
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GOOD NIGHT"
+            android:id="@+id/textView10"
+            android:textSize="23dp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GOOD AFTERNOON"
+            android:textSize="23dp"
+            android:textStyle="bold"
+            android:id="@+id/textView9"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="30dp"/>
+
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Boa Noite"
+            android:id="@+id/textView12"
+            android:textSize="23dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="35dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Boa Tarde"
+            android:textSize="23dp"
+            android:id="@+id/textView11"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="110dp"/>
+
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:id="@+id/imageView6"
+            android:src="@drawable/Morning"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"/>
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:id="@+id/imageView5"
+            android:src="@drawable/hello"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="90dp"/>
+
+
+    </TableRow>
+
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GOOD MORNING"
+            android:id="@+id/textView13"
+            android:textSize="23dp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HELLO"
+            android:textSize="23dp"
+            android:textStyle="bold"
+            android:id="@+id/textView15"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="80dp"/>
+
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Boa Noite"
+            android:id="@+id/textView16"
+            android:textSize="23dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="35dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ola"
+            android:textSize="23dp"
+            android:id="@+id/textView17"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="145dp"/>
+
+
+    </TableRow>
 
 </LinearLayout>
