@@ -29,12 +29,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="_____________________________________________________"
+        android:text="___________________________________________________"
         android:id="@+id/textView6"
         android:layout_gravity="center"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"/>
 
 
 </TableLayout>
@@ -48,7 +49,7 @@
         <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:id="@+id/imageView3"
+            android:id="@+id/img1"
             android:src="@drawable/night"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"/>
@@ -56,7 +57,7 @@
         <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:id="@+id/imageView4"
+            android:id="@+id/img2"
             android:src="@drawable/afternoon"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="90dp"/>
@@ -73,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GOOD NIGHT"
-            android:id="@+id/textView10"
+            android:id="@+id/ex1"
             android:textSize="23dp"
             android:textStyle="bold"
             android:layout_marginTop="15dp"
@@ -85,7 +86,7 @@
             android:text="GOOD AFTERNOON"
             android:textSize="23dp"
             android:textStyle="bold"
-            android:id="@+id/textView9"
+            android:id="@+id/ex2"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="30dp"/>
 
@@ -101,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Boa Noite"
-            android:id="@+id/textView12"
+            android:id="@+id/na1"
             android:textSize="23dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="35dp" />
@@ -111,7 +112,7 @@
             android:layout_height="wrap_content"
             android:text="Boa Tarde"
             android:textSize="23dp"
-            android:id="@+id/textView11"
+            android:id="@+id/na2"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="110dp"/>
 
@@ -127,15 +128,15 @@
         <ImageView
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:id="@+id/imageView6"
-            android:src="@drawable/Morning"
+            android:id="@+id/img3"
+            android:src="@drawable/morning"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"/>
 
         <ImageView
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:id="@+id/imageView5"
+            android:id="@+id/img4"
             android:src="@drawable/hello"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="90dp"/>
@@ -154,7 +155,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GOOD MORNING"
-            android:id="@+id/textView13"
+            android:id="@+id/ex3"
             android:textSize="23dp"
             android:textStyle="bold"
             android:layout_marginTop="15dp"
@@ -166,7 +167,7 @@
             android:text="HELLO"
             android:textSize="23dp"
             android:textStyle="bold"
-            android:id="@+id/textView15"
+            android:id="@+id/ex4"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="80dp"/>
 
@@ -182,7 +183,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Boa Noite"
-            android:id="@+id/textView16"
+            android:id="@+id/na3"
             android:textSize="23dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="35dp" />
@@ -192,7 +193,7 @@
             android:layout_height="wrap_content"
             android:text="Ola"
             android:textSize="23dp"
-            android:id="@+id/textView17"
+            android:id="@+id/na4"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="145dp"/>
 
