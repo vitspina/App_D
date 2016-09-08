@@ -10,9 +10,10 @@
     <string name="btnPortugues">Português</string>
     <string name="btnEspanhol">Espanhol</string>
     <string name="title_activity_act_map">actMap</string>
-    <string name="title_activity_act__airport">act_Airport</string>
+    <string name="title_activity_act_airport">act_Airport</string>
     <string name="actAirportFirst">Primeiro, vamos aprender algumas palavras necessárias</string>
-    <string name="title_activity_act__exercicio">act_Exercicio</string>
+    <string name="title_activity_act_exercicio">act_Exercicio</string>
+    <string name="title_activity_act_treino">act_Treino</string>
 
 
 </resources>
