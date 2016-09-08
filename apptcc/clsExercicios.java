@@ -46,7 +46,6 @@ public class clsExercicios extends SQLiteOpenHelper{
 
     public int getLevel(SQLiteDatabase db){
         Cursor c = db.rawQuery("SELECT * from usu_info", null);
-        c.moveToFirst();
         if(c.moveToFirst()) {
             level = c.getInt(1);
         }

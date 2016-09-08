@@ -113,6 +113,11 @@ public int numExer; // Guarda o num. do exercicio
         startActivity(nextActivity);
     }
     public void btnTreinoOnClick(){
-        level = level +1;
+        Bundle bundle = new Bundle();
+        bundle.putInt("level", level);
+        bundle.putInt("exerc", numExer);
+        Intent nextActivity = new Intent(this, act_Treino.class);
+        nextActivity.putExtras(bundle);
+        startActivity(nextActivity);
     }
 }

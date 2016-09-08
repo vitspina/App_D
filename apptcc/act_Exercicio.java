@@ -17,8 +17,8 @@ public class act_Exercicio extends AppCompatActivity {
     public int level, j;
     public int numExer; //Numero do Exercicio selecionado
     public String idioma;
-    public String[] nomeN = new String[9]; //Palavras Nativas
-    public String[] nomeE = new String[9]; //Palavras Estrangeiras
+    public String[] nomeN = new String[10]; //Palavras Nativas
+    public String[] nomeE = new String[10]; //Palavras Estrangeiras
     public int[] ppp = {5,5,5,5,5,5,5,5,5,5}; //Pontos Por Palavra
     public int[] nvlP = {3,3,3,3,3,3,3,3,3,3}; //Nivel da palavra
     public Random r = new Random();
@@ -47,7 +47,8 @@ public class act_Exercicio extends AppCompatActivity {
         level = classeExerc.getLevel(db);
         seekbar = ((CustomBarra) findViewById(R.id.customSeekBar));
 
-        verifyBase(db, classeExerc); //Cria/Busca as palavras
+        //verifyBase(db, classeExerc); //Cria/Busca as palavras
+        selecionarDados(db, numExer); //Busca Palavras
 
         final ProgressBar bp = (ProgressBar) findViewById(R.id.barPoints);
         final TextView txtPontos = (TextView) findViewById(R.id.txtPontos);
@@ -246,16 +247,16 @@ public class act_Exercicio extends AppCompatActivity {
         btnOpt3.setBackgroundResource(R.color.White);
         btnOpt4.setBackgroundResource(R.color.White);
 
-        r1 = r.nextInt(9 - 0) + 0;
+        r1 = r.nextInt(9 + 1);
 
         if(ppp[r1] == 1 || ppp[r1] ==2){
             aux  = r1;
-            r1 = r.nextInt(9 - 0) + 0;
+            r1 = r.nextInt(9 + 1);
             if(r1 == aux){
-                r1 = r.nextInt(9 - 0) + 0;
+                r1 = r.nextInt(9 + 1);
             }
             if(r1 == aux){
-                r1 = r.nextInt(9 - 0) + 0;
+                r1 = r.nextInt(9 + 1);
             }
         }
 
@@ -264,10 +265,12 @@ public class act_Exercicio extends AppCompatActivity {
 
         int i = 0;
         int[] outro = new int[4];
+        int[] nPode = new int[4];
 
         for(i = 0; i<4; i++) {
 
-            outro[i] = r.nextInt(9 - 0) + 0;
+            outro[i] = r.nextInt(9 + 1);
+
             if (outro[i] == r1) {
                 if (r1 != 0)
                     outro[i] = outro[i] - 1;
@@ -328,7 +331,7 @@ public class act_Exercicio extends AppCompatActivity {
 
             db.execSQL("CREATE TABLE IF NOT EXISTS "
                     + "tb_palavras"
-                    + " (id INT(1), level INT(3), language VARCHAR, palavra VARCHAR);");
+                    + " (id INT(3), level INT(3), language VARCHAR, palavra VARCHAR);");
 
             if (selecionarDados(db, numExer)) {
                 //Encontrou as palavras.... segue o jogo
@@ -338,8 +341,8 @@ public class act_Exercicio extends AppCompatActivity {
                     db.execSQL("INSERT INTO "
                             + "tb_palavras"
                             + " (id, level, language, palavra)"
-                            + " VALUES (1, 1, 'pt', 'Olá'),(2,1,'pt','Bom dia'),(3, 1, 'pt', 'Boa noite'),(4,1,'pt','Desculpe'),(5, 1, 'pt', 'Obrigado'),(6,1,'pt','Tchau'),(7, 1, 'pt', 'Noite'),(8,1,'pt','Dia'),(9, 1, 'pt', 'Tarde'),(10,1,'pt','Nome'),"
-                            + " (1, 1, 'en', 'Hello'),(2,1,'en','Good Morning'),(3, 1, 'en', 'Good Night'),(4,1,'en','Sorry'),(5, 1, 'en', 'Thank You'),(6,1,'en','Bye'),(7, 1, 'en', 'Night'),(8,1,'en','Day'),(9, 1, 'en', 'Afternoon'),(10,1,'en','Name')");
+                            + " VALUES (1,1,'pt','Olá'),(2,1,'pt','Bom dia'),(3,1,'pt','Boa noite'),(4,1,'pt','Desculpe'),(5,1,'pt','Obrigado'),(6,1,'pt','Tchau'),(7, 1, 'pt', 'Noite'),(8,1,'pt','Dia'),(9, 1, 'pt', 'Tarde'),(10,1,'pt','Nome'),"
+                            + " (1,1,'en','Hello'),(2,1,'en','Good Morning'),(3,1,'en','Good Night'),(4,1,'en','Sorry'),(5,1,'en','Thank You'),(6,1,'en','Bye'),(7, 1, 'en', 'Night'),(8,1,'en','Day'),(9, 1, 'en', 'Afternoon'),(10,1,'en','Name')");
                     clsExerc.setLevel(level+1, db);
                 }
                 else if (level == 2 && numExer ==2) { //Praca de Alim
@@ -359,23 +362,23 @@ public class act_Exercicio extends AppCompatActivity {
     }
     private boolean selecionarDados(SQLiteDatabase db, int numEx){
         /*retrieve data from database */
-        Cursor c = db.rawQuery("SELECT * FROM tb_palavras where level = "+(numEx)+" and language ='en'" , null); //'"+idioma+"'"
-        c.moveToFirst();
+        Cursor c = db.rawQuery("SELECT * FROM tb_palavras where level = "+(numEx)+" and language ='en' order by id" , null); //'"+idioma+"'"
+        //c.moveToFirst();
         int i = 0;
         if(c.moveToFirst()) {
-            while (c.moveToNext()) {
+            do {
                 nomeE[i] = c.getString(3);
                 i++;
-            }
+            }while(c.moveToNext());
         }
-        Cursor d = db.rawQuery("SELECT * FROM tb_palavras where level = "+(numEx)+" and language ='pt'" , null); //'"+idioma+"'"
-        d.moveToFirst();
+        Cursor d = db.rawQuery("SELECT * FROM tb_palavras where level = "+(numEx)+" and language ='pt' order by id" , null); //'"+idioma+"'"
+        //d.moveToFirst();
         i = 0;
         if(d.moveToFirst()) {
-            while (d.moveToNext()) {
-                nomeN[i] = d.getString(3);
-                i++;
-            }
+                do{
+                    nomeN[i] = d.getString(3);
+                    i++;
+                }while (d.moveToNext());
             return true;
         }
         else{
