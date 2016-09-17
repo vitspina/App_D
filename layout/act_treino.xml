@@ -54,14 +54,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"/>
 
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:id="@+id/img2"
-            android:src="@drawable/afternoon"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="90dp"/>
-
 
     </TableRow>
 
