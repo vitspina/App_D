@@ -64,17 +64,19 @@ public class tela_inicial extends AppCompatActivity {
                     + "usu_info"
                     + " (id INT(1), level INT(3), language VARCHAR);");
 
+            db.execSQL("CREATE TABLE IF NOT EXISTS "
+                    + "usu_inflvl"
+                    + " (level INT(3), treino INT(3), ex1 INT(3));");
+
             if (selecionarDados(db)) {
                 if(lvl == 0){
                     i = "INICIAR- "+ id + " - " + lvl + " - " + i;
                 }
             }else{
-                   /* Insert data to a Table*/
                 db.execSQL("INSERT INTO "
                         + "usu_info"
                         + " (id, level, language)"
                         + " VALUES (1, 0, 'none');");
-
                 selecionarDados(db);
             }
     }

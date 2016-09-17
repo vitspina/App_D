@@ -3,16 +3,11 @@ package boonedev.apptcc;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 public class act_Treino extends AppCompatActivity {
     public String[] nomeN = new String[10]; //Palavras Nativas
@@ -39,7 +34,7 @@ public class act_Treino extends AppCompatActivity {
         final Button btnPrevious = (Button) findViewById(R.id.btnPrevious);
         final Button btnIrParaExer = (Button) findViewById(R.id.btnIrParaExer);
         i=0;
-        clsExercicios classeExerc = new clsExercicios(this.getBaseContext());
+        final clsExercicios classeExerc = new clsExercicios(this.getBaseContext());
         level = classeExerc.getLevel(db);
         verifyBase(db, classeExerc); //Cria/Busca as palavras
         //selecionarDados(db, numExer);
@@ -63,6 +58,7 @@ public class act_Treino extends AppCompatActivity {
                     i++;
                 }else{
                     btnIrParaExer.setEnabled(true);
+                    classeExerc.setTreinoUp(level, db);
                 }
                 txtPalavraEX.setText(nomeE[i]);
                 txtPalavraNA.setText(nomeN[i]);
@@ -103,12 +99,22 @@ public class act_Treino extends AppCompatActivity {
                 //Não encontrou, cria
                 if (level == 1 && numExer == 1) { //Informacoes
                     db.execSQL("INSERT INTO "
+                            + "usu_inflvl"
+                            + " (level, treino, ex1)"
+                            + " VALUES (1,0,0)");
+
+                    db.execSQL("INSERT INTO "
                             + "tb_palavras"
                             + " (id, level, language, palavra)"
                             + " VALUES (1,1,'pt','Olá'),(2,1,'pt','Bom dia'),(3,1,'pt','Boa noite'),(4,1,'pt','Desculpe'),(5,1,'pt','Obrigado'),(6,1,'pt','Tchau'),(7, 1, 'pt', 'Noite'),(8,1,'pt','Dia'),(9, 1, 'pt', 'Tarde'),(10,1,'pt','Nome'),"
                             + " (1,1,'en','Hello'),(2,1,'en','Good Morning'),(3,1,'en','Good Night'),(4,1,'en','Sorry'),(5,1,'en','Thank You'),(6,1,'en','Bye'),(7, 1, 'en', 'Night'),(8,1,'en','Day'),(9, 1, 'en', 'Afternoon'),(10,1,'en','Name')");
                     clsExerc.setLevel(level + 1, db);
                 } else if (level == 2 && numExer == 2) { //Praca de Alim
+                    db.execSQL("INSERT INTO "
+                            + "usu_inflvl"
+                            + " (level, treino, ex1)"
+                            + " VALUES (2,0,0)");
+
                     db.execSQL("INSERT INTO "
                             + "tb_palavras"
                             + " (id, level, language, palavra)"

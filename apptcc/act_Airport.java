@@ -1,7 +1,7 @@
 package boonedev.apptcc;
 
 import android.content.Intent;
-import android.media.Image;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 public class act_Airport extends AppCompatActivity {
 public int level;
 public int numExer; // Guarda o num. do exercicio
+public SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,9 @@ public int numExer; // Guarda o num. do exercicio
         final Button btnPracaAlim = (Button) findViewById(R.id.btnPracaAlim);
         final ImageView rGroup = (ImageView) findViewById(R.id.rGroup);
 
+        db = this.openOrCreateDatabase("database", MODE_PRIVATE, null);
+        final clsExercicios obj = new clsExercicios(getBaseContext());
+        level = obj.getLevel(db);
 
         //Apaga os botoes da tela
         btnExercicio.setVisibility(View.INVISIBLE);
@@ -81,19 +85,26 @@ public int numExer; // Guarda o num. do exercicio
             @Override
             public void onClick(View view) {
                 numExer = 2; //Clicou no botao Praca de alimentacao
-                btnExercicio.setVisibility(View.VISIBLE);
-                btnTreino.setVisibility(View.VISIBLE);
-                btnVoltarGroup.setVisibility((View.VISIBLE));
-                rGroup.setVisibility(View.VISIBLE);
+                level = obj.getLevel(db);
+                if(level < numExer) {
+                    Toast.makeText(getApplicationContext(), "Terminar nível anterior primeiro!", Toast.LENGTH_LONG).show();
+                }else {
+                    btnExercicio.setVisibility(View.VISIBLE);
+                    btnTreino.setVisibility(View.VISIBLE);
+                    btnVoltarGroup.setVisibility((View.VISIBLE));
+                    rGroup.setVisibility(View.VISIBLE);
+                }
             }
         });
         btnTaxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(btnTaxi.getTag() == "locked"){
 
+                numExer = 3; //Clicou no botao Taxi
+                level = obj.getLevel(db);
+                if(level < numExer) {
+                    Toast.makeText(getApplicationContext(), "Terminar nível anterior primeiro!", Toast.LENGTH_LONG).show();
                 }else {
-                    numExer = 3; //Clicou no botao Taxi
                     btnExercicio.setVisibility(View.VISIBLE);
                     btnTreino.setVisibility(View.VISIBLE);
                     btnVoltarGroup.setVisibility((View.VISIBLE));

@@ -40,10 +40,10 @@ public class act_Exercicio extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         level = extras.getInt("level");
         numExer  = extras.getInt("exerc");
-        SQLiteDatabase db;
+        final SQLiteDatabase db;
         db = this.openOrCreateDatabase("database", MODE_PRIVATE, null);
 
-        clsExercicios classeExerc = new clsExercicios(this.getBaseContext());
+         final clsExercicios classeExerc = new clsExercicios(this.getBaseContext());
         level = classeExerc.getLevel(db);
         seekbar = ((CustomBarra) findViewById(R.id.customSeekBar));
 
@@ -58,9 +58,14 @@ public class act_Exercicio extends AppCompatActivity {
         final Button btnOpt3 = (Button) findViewById(R.id.btnOpt3);
         final Button btnOpt4 = (Button) findViewById(R.id.btnOpt4);
 
+        if(classeExerc.getPontosEx(db, level) >= 100){
+            pontos = classeExerc.getPontosEx(db, level);
+        }
+
         bp.setProgress(0);
         txtPontos.setText("Pontos: " + pontos);
         if(!controlaCreateBar) criaBarraMultiCor();
+
         mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +86,9 @@ public class act_Exercicio extends AppCompatActivity {
                     if(ppp[j] != 1)
                     ppp[j]--;
                     bp.setProgress(pontos);
+                    if(pontos >= 100){
+                        classeExerc.setExUp(level, db, pontos);
+                    }
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
                     alteraBarraMultiCor();
                 } else {//Errou
@@ -105,6 +113,9 @@ public class act_Exercicio extends AppCompatActivity {
                     txtPontos.setText("Pontos: " + (pontos));
                     if(ppp[j] != 1)
                         ppp[j]--;                    bp.setProgress(pontos);
+                    if(pontos >= 100){
+                        classeExerc.setExUp(level, db, pontos);
+                    }
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
                     alteraBarraMultiCor();
                 }else{//Errou
@@ -130,6 +141,9 @@ public class act_Exercicio extends AppCompatActivity {
                     if(ppp[j] != 1)
                         ppp[j]--;
                     bp.setProgress(pontos);
+                    if(pontos >= 100){
+                        classeExerc.setExUp(level, db, pontos);
+                    }
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
                     alteraBarraMultiCor();
                 }else{//Errou
@@ -148,13 +162,18 @@ public class act_Exercicio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 j = (int) btn.getTag();
-                if(btnOpt4.getTag() == btn.getTag()){
+                if(btnOpt4.getTag() == btn.getTag()) {
                     //Certo
                     pontos = pontos + ppp[j];
                     txtPontos.setText("Pontos: " + (pontos));
                     if(ppp[j] != 1)
                         ppp[j]--;
                     bp.setProgress(pontos);
+
+                    if(pontos >= 100){
+                        classeExerc.setExUp(level, db, pontos);
+                    }
+
                     mudaBotoes(btn, btnOpt1, btnOpt2, btnOpt3, btnOpt4);
                     alteraBarraMultiCor();
                 } else {//Errou
@@ -242,6 +261,7 @@ public class act_Exercicio extends AppCompatActivity {
     public void mudaBotoes(Button btn, Button btnOpt1, Button btnOpt2, Button btnOpt3, Button btnOpt4){
         int r1 = 0;
         int aux;
+
         btnOpt1.setBackgroundResource(R.color.White);
         btnOpt2.setBackgroundResource(R.color.White);
         btnOpt3.setBackgroundResource(R.color.White);
