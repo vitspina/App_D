@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/insideteste"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="boonedev.apptcc.act_Airport"
+    tools:showIn="@layout/activity_act_airport">
+
+
+    <Button
+        android:layout_width="85dp"
+        android:layout_height="42dp"
+        android:text="Treino"
+        android:id="@+id/btnTreino"
+        android:background="@drawable/buttonshapebloq"
+        android:layout_marginTop="410dp"
+        android:layout_marginLeft="148dp"/>
+
+    <Button
+        android:layout_width="90dp"
+        android:layout_height="42dp"
+        android:text="Exercício"
+        android:background="@drawable/buttonshapebloq"
+        android:id="@+id/btnExercicio"
+        android:layout_marginLeft="148dp"
+        android:layout_marginTop="459dp"/>
+
+    <Button
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="INFO"
+        android:id="@+id/btnInfo"
+        android:background="@drawable/buttonshapebloq"
+        android:layout_marginTop="510dp"
+        android:layout_marginLeft="158dp"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="190dp"
+        android:id="@+id/rGroup"
+        android:background="@drawable/rectangle2"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="408dp"/>
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:text="VOLTAR"
+        android:id="@+id/btnVoltarGroup"
+        android:background="@drawable/buttonshapebloq"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="515dp"
+        />
+
+
+
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="245dp"
+        android:id="@+id/btnPracaAlim"
+        android:background="@drawable/alime"
+        android:layout_marginLeft="238dp"
+        android:layout_marginTop="01dp"
+       />
+
+
+
+    <Button
+        android:layout_width="144dp"
+        android:layout_height="178dp"
+        android:id="@+id/btnTaxi"
+        android:background="@drawable/saida"
+        android:layout_marginLeft="103dp"
+        android:layout_marginTop="11dp"
+       />
+
+
+
+
+
+</RelativeLayout>
