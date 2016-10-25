@@ -68,6 +68,20 @@ public class tela_inicial extends AppCompatActivity {
                     + "usu_inflvl"
                     + " (level INT(3), treino INT(3), ex1 INT(3));");
 
+        Cursor c = db.rawQuery("SELECT level FROM usu_inflvl", null);
+        if(c.moveToFirst()){
+
+        }
+        else{
+            db.execSQL("INSERT INTO "
+                    + "usu_inflvl"
+                    + " (level, treino, ex1)"
+                    + " VALUES (1,0,0), (2,0,0), (3,0,0), (4,0,0),(5,0,0), (6,0,0),"
+                    + "(7,0,0), (8,0,0), (9,0,0), (10,0,0),(11,0,0), (12,0,0);");
+        }
+
+
+
             if (selecionarDados(db)) {
                 if(lvl == 0){
                     i = "INICIAR- "+ id + " - " + lvl + " - " + i;

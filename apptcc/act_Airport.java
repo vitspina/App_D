@@ -16,9 +16,27 @@ public int numExer; // Guarda o num. do exercicio
 public SQLiteDatabase db;
 
     @Override
+    public void onResume()
+    {  // After a pause OR at startup
+        super.onResume();
+        final Button btnTaxi = (Button) findViewById(R.id.btnTaxi);
+        final Button btnPracaAlim = (Button) findViewById(R.id.btnPracaAlim);
+
+        final clsExercicios obj = new clsExercicios(getBaseContext());
+        level = obj.getLevel(db);
+
+        if(level == 2)
+            btnPracaAlim.setBackgroundResource(R.drawable.ic1pral2);
+        if(level ==3) {
+            btnPracaAlim.setBackgroundResource(R.drawable.ic1pral2);
+            btnTaxi.setBackgroundResource(R.drawable.ic1taxi2);
+        }
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act__airport);
+
         final Button btnExercicio = (Button) findViewById(R.id.btnExercicio);
         final Button btnVoltarGroup = (Button) findViewById(R.id.btnVoltarGroup);
         final Button btnTreino = (Button) findViewById(R.id.btnTreino);
@@ -31,6 +49,12 @@ public SQLiteDatabase db;
         final clsExercicios obj = new clsExercicios(getBaseContext());
         level = obj.getLevel(db);
 
+        if(level == 2)
+            btnPracaAlim.setBackgroundResource(R.drawable.ic1pral2);
+        if(level ==3) {
+            btnPracaAlim.setBackgroundResource(R.drawable.ic1pral2);
+            btnTaxi.setBackgroundResource(R.drawable.ic1taxi2);
+        }
         //Apaga os botoes da tela
         btnExercicio.setVisibility(View.INVISIBLE);
         btnTreino.setVisibility(View.INVISIBLE);
