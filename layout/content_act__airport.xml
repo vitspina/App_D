@@ -4,11 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/teste3"
+    android:background="@drawable/insairp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="boonedev.apptcc.act_Airport"
     tools:showIn="@layout/activity_act__airport">
@@ -19,7 +15,7 @@
         android:text="Treino"
         android:id="@+id/btnTreino"
         android:background="@drawable/buttonshapebloq"
-        android:layout_marginTop="159dp"
+        android:layout_marginTop="359dp"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -33,13 +29,13 @@
         android:layout_alignStart="@+id/btnTreino" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1. INFO"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text=""
+        android:layout_marginTop="250dp"
         android:id="@+id/btnInfo"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/btnTreino"
-        android:layout_toStartOf="@+id/btnTreino" />
+        android:background="@drawable/ic1info2"
+        android:layout_alignParentTop="true" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -67,27 +63,27 @@
 
 
     <Button
-        android:layout_width="250dp"
-        android:layout_height="180dp"
-        android:text="2"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:text=""
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="100dp"
         android:id="@+id/btnPracaAlim"
-        android:background="@drawable/rest"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/btnInfo"
-        android:layout_toEndOf="@+id/btnInfo" />
+        android:background="@drawable/ic1pral1"
+ />
 
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Taxi"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text=""
+        android:background="@drawable/ic1taxi1"
         android:id="@+id/btnTaxi"
-        android:drawableLeft="@drawable/lock"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="30dp"
         android:tag="locked"
-        android:layout_alignTop="@+id/btnInfo"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+         />
 
 
 

@@ -24,6 +24,7 @@
                 android:layout_alignParentBottom="true">
 
 
+
                 <ImageView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
@@ -44,46 +45,142 @@
                     android:layout_alignParentStart="true" />
 
                 <Button
-                    android:layout_width="60dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/taxi"
-                    android:id="@+id/Taxi"
-                    android:layout_below="@+id/imgAirpStars"
-                    android:layout_toRightOf="@+id/imgAirpStars"
-                    android:layout_toEndOf="@+id/imgAirpStars"
-                    android:layout_marginLeft="90dp"
-                    android:layout_marginStart="90dp"
-                    android:layout_marginTop="25dp" />
+                    android:layout_width="268dp"
+                    android:layout_height="175dp"
+                    android:background="@drawable/btnhospital"
+                    android:id="@+id/btnHospital"
+                    android:layout_marginTop="130dp"
+                    android:layout_marginLeft="-35dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/btnAirport"
+                    android:layout_toEndOf="@+id/btnAirport" />
 
                 <Button
-                    android:layout_width="250dp"
-                    android:layout_height="130dp"
-                    android:id="@+id/btnHospital"
-                    android:background="@drawable/hospital"
-                    android:layout_alignTop="@+id/Taxi"
+                    android:layout_width="148dp"
+                    android:layout_height="120dp"
+                    android:background="@drawable/btnhotel"
+                    android:id="@+id/btnHotel"
+                    android:layout_marginLeft="55dp"
+                    android:layout_marginTop="-5dp"
+                    android:layout_alignParentTop="true"
                     android:layout_toRightOf="@+id/btnAirport"
-                    android:layout_toEndOf="@+id/btnAirport"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginStart="28dp" />
+                    android:layout_toEndOf="@+id/btnAirport" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imgAirpStars"
-
-                    android:layout_alignBottom="@+id/btnAirport"
+                <Button
+                    android:layout_width="188dp"
+                    android:layout_height="115dp"
+                    android:background="@drawable/btnescola"
+                    android:id="@+id/btnescola"
+                    android:layout_marginLeft="57dp"
+                    android:layout_marginTop="15dp"
                     android:layout_below="@+id/btnAirport" />
 
                 <Button
-                    android:layout_width="160dp"
-                    android:layout_height="140dp"
-                    android:background="@drawable/btnhotel"
-                    android:id="@+id/btnHotel"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignLeft="@+id/btnHospital"
-                    android:layout_alignStart="@+id/btnHospital"
-                    android:layout_marginLeft="38dp"
-                    android:layout_marginStart="38dp" />
+                    android:layout_width="190dp"
+                    android:layout_height="165dp"
+                    android:background="@drawable/btnempresa"
+                    android:id="@+id/btnempresa"
+                    android:layout_marginTop="-6dp"
+                    android:layout_below="@+id/btnescola"
+                    android:layout_alignRight="@+id/btnAirport"
+                    android:layout_alignEnd="@+id/btnAirport" />
+
+                <Button
+                    android:layout_width="190dp"
+                    android:layout_height="115dp"
+                    android:background="@drawable/btnmercado"
+                    android:id="@+id/btnmercado"
+                    android:layout_marginLeft="-30dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_alignTop="@+id/btnempresa"
+                    android:layout_toRightOf="@+id/btnHotel"
+                    android:layout_toEndOf="@+id/btnHotel" />
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:text=""
+                    android:id="@+id/btnicairp"
+                    android:background="@drawable/icairp"
+                    android:layout_below="@+id/btnHotel"
+                    android:layout_alignLeft="@+id/btnescola"
+                    android:layout_alignStart="@+id/btnescola" />
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:text=""
+                    android:id="@+id/btnIcHotel"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="430dp"
+                    android:background="@drawable/ichotellock"
+                     />
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:text=""
+                    android:id="@+id/btnIcEscola"
+                    android:background="@drawable/icescolalock"
+                    android:layout_marginTop="220dp"
+                    android:layout_marginLeft="100dp"/>
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:text=""
+                    android:id="@+id/btnIcEmpresa"
+                    android:background="@drawable/icempresalock"
+                    android:layout_alignBottom="@+id/btnmercado"
+                    android:layout_toRightOf="@+id/btnicairp"
+                    android:layout_toEndOf="@+id/btnicairp" />
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:text=""
+                    android:id="@+id/btnIcHosp"
+                    android:background="@drawable/ichosplock"
+                    android:layout_marginTop="210dp"
+                    android:layout_marginLeft="390dp" />
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:text=""
+                    android:id="@+id/btnIcMerc"
+                    android:background="@drawable/icmerclock"
+                    android:layout_below="@+id/btnescola"
+                    android:layout_toRightOf="@+id/btnIcHotel"
+                    android:layout_toEndOf="@+id/btnIcHotel" />
+                <Button
+                    android:layout_width="180dp"
+                    android:layout_height="105dp"
+                    android:background="@drawable/btnparque"
+                    android:id="@+id/btnParque"
+                    android:layout_marginLeft="520dp"
+                    android:layout_marginTop="160dp"
+                    />
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:text=""
+                    android:id="@+id/btnIcParque"
+                    android:background="@drawable/icparquelock"
+                    android:layout_below="@+id/btnAirport"
+                    android:layout_alignLeft="@+id/btnIcMerc"
+                    android:layout_alignStart="@+id/btnIcMerc"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginStart="27dp" />
+
+
 
 
             </RelativeLayout>

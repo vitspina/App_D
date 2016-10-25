@@ -123,7 +123,7 @@
     <boonedev.apptcc.CustomBarra
         android:id="@+id/customSeekBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:max="100"
         android:progress="0"
         android:progressDrawable="@android:color/transparent"
