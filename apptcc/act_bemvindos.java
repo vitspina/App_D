@@ -60,10 +60,9 @@ public class act_bemvindos extends AppCompatActivity {
      public  void onContinue(){
 
      //chamar tela inicial
-
-
-
-
+         Intent intent = new Intent(act_bemvindos.this, tela_inicial.class);
+          startActivity(intent);
+           finish();
 
          }
 }
