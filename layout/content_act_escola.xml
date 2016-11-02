@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/insairp"
+    android:background="@drawable/insideescola"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="boonedev.apptcc.act_Airport"
-    tools:showIn="@layout/activity_act__airport">
+    tools:context="boonedev.apptcc.act_Escola"
+    tools:showIn="@layout/activity_act_escola">
 
     <Button
         android:layout_width="100dp"
@@ -33,8 +33,8 @@
         android:layout_height="50dp"
         android:text=""
         android:layout_marginTop="250dp"
-        android:id="@+id/btnInfo"
-        android:background="@drawable/ic1info1"
+        android:id="@+id/btnSecretaria"
+        android:background="@drawable/icesc1a"
         android:layout_alignParentTop="true" />
 
     <ImageView
@@ -68,9 +68,9 @@
         android:text=""
         android:layout_marginLeft="120dp"
         android:layout_marginTop="100dp"
-        android:id="@+id/btnPracaAlim"
-        android:background="@drawable/ic1pral2"
- />
+        android:id="@+id/btnDiscip"
+        android:background="@drawable/icesc2b"
+        />
 
 
 
@@ -78,12 +78,12 @@
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:text=""
-        android:background="@drawable/ic1taxi2"
-        android:id="@+id/btnTaxi"
+        android:background="@drawable/icesc3b"
+        android:id="@+id/btnNumeros"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="30dp"
         android:tag="locked"
-         />
+        />
 
 
 
