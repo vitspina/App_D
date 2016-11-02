@@ -10,49 +10,50 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class act_Airport extends AppCompatActivity {
-public int level;
-public int numExer; // Guarda o num. do exercicio
-public SQLiteDatabase db;
+public class act_Hotel extends AppCompatActivity {
+    public int level;
+    public int numExer; // Guarda o num. do exercicio
+    public SQLiteDatabase db;
 
     @Override
     public void onResume()
-    {  // After a pause OR at startup
+    {
         super.onResume();
-        final Button btnTaxi = (Button) findViewById(R.id.btnTaxi);
-        final Button btnPracaAlim = (Button) findViewById(R.id.btnPracaAlim);
+        final Button btnRestaur = (Button) findViewById(R.id.btnRestaur);
+        final Button btnQuarto = (Button) findViewById(R.id.btnQuarto);
 
         final clsExercicios obj = new clsExercicios(getBaseContext());
         level = obj.getLevel(db);
 
-        if(level == 2)
-            btnPracaAlim.setBackgroundResource(R.drawable.ic1pral1);
-        if(level ==3) {
-            btnPracaAlim.setBackgroundResource(R.drawable.ic1pral1);
-            btnTaxi.setBackgroundResource(R.drawable.ic1taxi1);
+        if(level == 5)
+            btnQuarto.setBackgroundResource(R.drawable.ichotel2a);
+        if(level ==6) {
+            btnQuarto.setBackgroundResource(R.drawable.ichotel2a);
+            btnRestaur.setBackgroundResource(R.drawable.ichotel3a);
         }
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_act__airport);
+        setContentView(R.layout.activity_act_hotel);
 
         final Button btnExercicio = (Button) findViewById(R.id.btnExercicio);
         final Button btnVoltarGroup = (Button) findViewById(R.id.btnVoltarGroup);
         final Button btnTreino = (Button) findViewById(R.id.btnTreino);
-        final Button btnInfo = (Button) findViewById(R.id.btnInfo);
-        final Button btnTaxi = (Button) findViewById(R.id.btnTaxi);
-        final Button btnPracaAlim = (Button) findViewById(R.id.btnPracaAlim);
+        final Button btnRecepcao = (Button) findViewById(R.id.btnRecepcao);
+        final Button btnQuarto = (Button) findViewById(R.id.btnQuarto);
+        final Button btnRestaur = (Button) findViewById(R.id.btnRestaur);
         final ImageView rGroup = (ImageView) findViewById(R.id.rGroup);
 
         db = this.openOrCreateDatabase("database", MODE_PRIVATE, null);
         final clsExercicios obj = new clsExercicios(getBaseContext());
         level = obj.getLevel(db);
-        if(level == 2)
-            btnPracaAlim.setBackgroundResource(R.drawable.ic1pral1);
-        if(level >=3) {
-            btnPracaAlim.setBackgroundResource(R.drawable.ic1pral1);
-            btnTaxi.setBackgroundResource(R.drawable.ic1taxi1);
+
+        if(level == 5)
+            btnQuarto.setBackgroundResource(R.drawable.ichotel2a);
+        if(level ==6) {
+            btnQuarto.setBackgroundResource(R.drawable.ichotel2a);
+            btnRestaur.setBackgroundResource(R.drawable.ichotel3a);
         }
         //Apaga os botoes da tela
         btnExercicio.setVisibility(View.INVISIBLE);
@@ -89,25 +90,20 @@ public SQLiteDatabase db;
         });
         TextView txt = (TextView) findViewById(R.id.textView);
 
-
-        if(level == 0) {
-            Toast.makeText(getApplicationContext(), "Vamos aprender palavras necessarias!", Toast.LENGTH_LONG).show();
-        }
-
-        btnInfo.setOnClickListener(new View.OnClickListener() {
+        btnRecepcao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numExer = 1; //Clicou no botao Informacoes
+                numExer = 4;
                 btnExercicio.setVisibility(View.VISIBLE);
                 btnTreino.setVisibility(View.VISIBLE);
                 btnVoltarGroup.setVisibility((View.VISIBLE));
                 rGroup.setVisibility(View.VISIBLE);
             }
         });
-        btnPracaAlim.setOnClickListener(new View.OnClickListener() {
+        btnQuarto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numExer = 2; //Clicou no botao Praca de alimentacao
+                numExer = 5;
                 level = obj.getLevel(db);
                 if(level < numExer) {
                     Toast.makeText(getApplicationContext(), "Terminar nível anterior primeiro!", Toast.LENGTH_LONG).show();
@@ -119,11 +115,10 @@ public SQLiteDatabase db;
                 }
             }
         });
-        btnTaxi.setOnClickListener(new View.OnClickListener() {
+        btnRestaur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                numExer = 3; //Clicou no botao Taxi
+                numExer = 6;
                 level = obj.getLevel(db);
                 if(level < numExer) {
                     Toast.makeText(getApplicationContext(), "Terminar nível anterior primeiro!", Toast.LENGTH_LONG).show();
