@@ -42,7 +42,9 @@ public class act_Treino extends AppCompatActivity {
         txtPalavraEX.setText(nomeE[i]);
         txtPalavraNA.setText(nomeN[i]);
         txtLimite.setText((i+1)+"/10");
-        btnIrParaExer.setBackground(getResources().getDrawable(R.drawable.lock));
+        //btnIrParaExer.setBackground(getResources().getDrawable(R.drawable.lock));
+        btnIrParaExer.setVisibility(View.INVISIBLE);
+
 
         btnIrParaExer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +59,7 @@ public class act_Treino extends AppCompatActivity {
                 if(i != 9) {
                     i++;
                 }else{
+                    btnIrParaExer.setVisibility(View.VISIBLE);
                     btnIrParaExer.setEnabled(true);
                     classeExerc.setTreinoUp(level, db);
                 }
